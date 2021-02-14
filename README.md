@@ -194,4 +194,5 @@ To see your account balance, search your account address [here in the Straighted
 `strcli tx slashing unjail --from validator --chain-id straightedge-2 --fees 5000000000000000astr --yes`
 
 # To do
-Links to other resources
+1. Troubleshooting
+2. Links to other resources

@@ -23,25 +23,21 @@ Minimum recommended hardware requirements: 1 vCPU; 2gb RAM; 50gb SSD
 
 (this downloads and installs Go)
 
-`cat <<'EOF' >>$HOME/.profile`
-
-`export GOROOT=/usr/local/go`
-
-`export GOPATH=$HOME/go`
-
-`export GO111MODULE=on`
-
-`export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin`
-
-`EOF`
-
-`source $HOME/.profile`
+```
+cat <<'EOF' >>$HOME/.profile
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export GO111MODULE=on
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+EOF
+source $HOME/.profile
+```
 
 (these commands update environment variables to include Go)
 
+Check to see if Go was installed:
 `go version`
 
-(checks to see if Go was installed)
 
 # Install Straightedge
 `git clone https://github.com/heystraightedge/straightedge`
@@ -54,7 +50,31 @@ Minimum recommended hardware requirements: 1 vCPU; 2gb RAM; 50gb SSD
 
 (checks to see if Straightedge was installed)
 
-#Configure Straightedge
+# Create wallet
+
+`strcli keys add validator`
+
+This will create a new, password-protected w wallet named "validator". You should see something that looks like this:
+
+```
+name: validator
+  type: local
+  address: str1le57a2klterkxda4vpw4a3qdlk4ur4pgunpl9z
+  pubkey: strpub1addwnpepqdackpms5ze5qqxaj38z8pnkeh4fhxwwjrgnk37zamvz8442tjvqxpqa574
+  mnemonic: ""
+  threshold: 0
+  pubkeys: []
+
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+```
+
+Your account address begins with `str1`. [Ask Block Producer on Discord](https://discord.gg/Wp4qa38) to send STR to your address. You'll need STR to create your validator.
+
+**Important!** Write down the 24 word mnemonic phrase and keep it safe. Whatever happens to your account, this mnemonic phrase can be used to recover your tokens, otherwise they will be lost forever. Do not share this mnemonic phrase with anyone or they can take all of your tokens.
+
+# Configure Straightedge
 
 `strd init --chain-id straightedge-2 ValidatorName`
 
@@ -110,13 +130,10 @@ Check to see if your node has synced before creating a validator
 
 `strcli status | jq .sync_info`
 
-At first you'll see `"catching_up": true`. When this says false, you can create your validator.
+At first you'll see `"catching_up": true`. When this says false, you can create your validator. It could take 24 hours to catch up. In future I will try to provide a snapshot to speed this process up.
 
-# Create wallet
+Look at `"latest_block_height"` and compare with the [Straightedge block explorer](http://explorer.straighted.ge/blocks). That should give you an idea of how close you are to having your node synchronized.
 
-To do
-
-Then ask Block Producer to send you STR tokens via Discord (link)
 
 # Create validator
 

@@ -137,6 +137,8 @@ Look at `"latest_block_height"` and compare with the [Straightedge block explore
 
 # Create validator
 
+Careful not to delegate all of your tokens. You'll need available STR to make transactions.
+
 ```
 strcli tx staking create-validator \
   --amount=10000000000000000000astr \
@@ -157,6 +159,39 @@ strcli tx staking create-validator \
 You will need to have STR in your account to send the above transaction. The command above may need to have a different fee amount or use the gas flag. If it doesn't work, let us know.
 
 
+# Common commands
+
+You can always see the list of command options with `strcli -h`
+
+STR are always denominated in `astr`, so 100 STR = `10000000000000000astr`
+
+To see your account balance, search your account address [here in the Straightedge explorer.](http://explorer.straighted.ge)
+
+1. Withdraw your staking rewards:
+
+`strcli tx distribution withdraw-all-rewards --from validator --chain-id straightedge-2 --fees 10000000000000000astr --gas 400000 --yes`
+
+2. Withdraw your staking commission (if you have delegators):
+
+`strcli tx distribution withdraw-rewards <your validator strvaloper1..> --from validator --chain-id straightedge-2 --fees 5000000000000000astr --commission --yes`
+
+[Find your validator address (strvaloper1..) here in the explorer.](http://explorer.straighted.ge/validators)
+
+3. Delegate 100 STR to your validator or a different validator:
+
+`strcli tx staking delegate <strvaloper1..> 10000000000000000astr --from validator --chain-id straightedge-2 --fees 5000000000000000astr --yes`
+
+4. Send 5 STR to another account:
+
+`strcli tx send validator <str1..> 5000000000000000000astr --chain-id straightedge-2 --fees 5000000000000000astr`
+
+5. Vote yes on governance proposal 2 [(see proposals here)](http://explorer.straighted.ge/proposals):
+
+`strcli tx gov vote 2 yes --chain-id straightedge-2 --fees 10000000000000000astr --gas 400000 --from validator`
+
+6. If your validator is jailed and your are satisfied that your node is now synced, you can unjail:
+
+`strcli tx slashing unjail --from validator --chain-id straightedge-2 --fees 5000000000000000astr --yes`
+
 # To do
-1. common commands used by validator
-2. links to other resources
+Links to other resources

@@ -136,6 +136,7 @@ Look at `"latest_block_height"` and compare with the [Straightedge block explore
 
 
 # Create validator
+Your node will need to be fully synced before you can create your validator.
 
 Careful not to delegate all of your tokens. You'll need available STR to make transactions.
 

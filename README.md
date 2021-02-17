@@ -8,6 +8,8 @@ Minimum recommended hardware requirements: 1 vCPU; 2gb RAM; 50gb SSD
 
 `sudo apt upgrade -y`
 
+`sudo apt install build-essential`
+
 `apt install make`
 
 `apt install gcc`

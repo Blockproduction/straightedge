@@ -166,7 +166,7 @@ You will need to have STR in your account to send the above transaction. The com
 
 You can always see the list of command options with `strcli -h`
 
-STR are always denominated in `astr`, so 100 STR = `10000000000000000astr`
+STR are always denominated in `astr`, so 100 STR = `100000000000000000000astr`
 
 To see your account balance, search your account address [here in the Straightedge explorer.](http://explorer.straighted.ge)
 
@@ -182,7 +182,7 @@ To see your account balance, search your account address [here in the Straighted
 
 3. Delegate 100 STR to your validator or a different validator:
 
-`strcli tx staking delegate <strvaloper1..> 10000000000000000astr --from validator --chain-id straightedge-2 --fees 5000000000000000astr --yes`
+`strcli tx staking delegate <strvaloper1..> 100000000000000000000astr --from validator --chain-id straightedge-2 --fees 5000000000000000astr --yes`
 
 4. Send 5 STR to another account:
 
